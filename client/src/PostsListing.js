@@ -1,25 +1,41 @@
-import Post from "./Post";
-import {useState,useEffect} from "react";
-import axios from "axios";
+import Post from './Post';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function PostsListing() {
+function PostsListing({ value }) {
+	const [comments, setComments] = useState([]);
 
-  const [comments,setComments] = useState([]);
+	useEffect(() => {
+		if (value === '') {
+			axios
+				.get('http://localhost:4000/comments', { withCredentials: true })
+				.then((response) => setComments(response.data));
+		} else {
+			setComments(
+				comments.filter((i) => {
+					return i.title.toLowerCase().startsWith(value.toLowerCase());
+				})
+			);
+		}
+	}, [value]);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/comments', {withCredentials:true})
-      .then(response => setComments(response.data));
+	console.log(comments);
 
-  }, []);
+	useEffect(() => {
+		axios
+			.get('http://localhost:4000/comments', { withCredentials: true })
+			.then((response) => setComments(response.data));
+	}, []);
 
+	// console.log(value);
 
-  return (
-    <div className="bg-reddit_dark">
-      {comments.map(comment => (
-        <Post {...comment} isListing={true} />
-      ))}
-    </div>
-  );
+	return (
+		<div className='bg-reddit_dark'>
+			{comments.map((comment) => (
+				<Post {...comment} isListing={true} />
+			))}
+		</div>
+	);
 }
 
 export default PostsListing;

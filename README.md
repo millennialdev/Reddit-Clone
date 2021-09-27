@@ -1,6 +1,8 @@
 # Reddit Clone Using MERN Stack
 
-## This was done in part as a coding exercise for CoSchedule
+## Thanks for the gold kind stranger! 😉
+
+## This was done in part as a coding exercise for CoSchedule, and is a Clone of the famous website that often goes by the name of Reddit, and also this app utilizes the HackerNews API.
 
 ### Spenser Wellen
 
