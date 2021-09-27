@@ -1,0 +1,3 @@
+$.ajax({ type: "GET", url: 'http://127.0.0.1:3000/posts', dataType: "json",
+success: function(res) { var res_data = JSON.parse(res); console.log(res_data);
+} });
