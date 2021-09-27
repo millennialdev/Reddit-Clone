@@ -22,9 +22,9 @@
 
 #### After you have checked that both of these terminals were able to successfully run these commands, go to your browser and navigate to `localhost:3000`, and that is where you should see the Reddit Clone running 😁.
 
-Installation:
+### Installation:
 
-## Make sure you have MongoDB running locally, otherwise you may not get much (if any at all) of the functionality that is built into this app.
+Make sure you have MongoDB running locally, otherwise you may not get much (if any at all) of the functionality that is built into this app.
 
 `yarn install` || `yarn`
 
