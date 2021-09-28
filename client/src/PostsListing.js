@@ -19,15 +19,13 @@ function PostsListing({ value }) {
 		}
 	}, [value]);
 
-	console.log(comments);
+	// console.log(comments);
 
 	useEffect(() => {
 		axios
 			.get('http://localhost:4000/comments', { withCredentials: true })
 			.then((response) => setComments(response.data));
 	}, []);
-
-	// console.log(value);
 
 	return (
 		<div className='bg-reddit_dark'>

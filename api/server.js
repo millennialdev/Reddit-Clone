@@ -119,6 +119,22 @@ app.get('/comments/:id', (req, res) => {
 	});
 });
 
+// delete method!!!
+app.delete('/comments/:id', (req, res) => {
+	console.log('comment is going to be deleted now');
+	console.log('comment is going to be deleted now');
+	console.log('comment is going to be deleted now');
+	console.log('comment is going to be deleted now');
+	console.log('comment is going to be deleted now');
+
+	Comment.findByIdAndRemove(req.params.id).exec((error, deletedItem) => {
+		if (error) {
+			res.send(error);
+		}
+		return res.json(deletedItem);
+	});
+});
+
 app.post('/comments', (req, res) => {
 	const token = req.cookies.token;
 	if (!token) {
@@ -153,7 +169,6 @@ app.get('/news', function (req, res) {
 		'https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty',
 		function (error, response, body) {
 			const obj = JSON.parse(body);
-			// console.log(obj);
 			res.json(obj);
 		}
 	);
