@@ -15,9 +15,16 @@ function Post(props) {
 	}
 
 	function handleDelete() {
-		console.log(props._id);
 		axios
 			.delete('http://localhost:4000/comments/' + props._id)
+			.then(() => window.location.reload());
+		return false;
+	}
+
+	function handleEdit() {
+		let data = 'hello world';
+		axios
+			.put('http://localhost:4000/comments/' + props._id, data)
 			.then(() => window.location.reload());
 		return false;
 	}
@@ -41,7 +48,7 @@ function Post(props) {
 			)}
 			<div class='flex flex-row justify-evenly w-28 ml-auto mr-auto'>
 				<svg
-					// onClick={() => handleEdit()}
+					onClick={() => handleEdit()}
 					xmlns='http://www.w3.org/2000/svg'
 					class='h-8 w-8 ml-auto mr-auto mt-5 cursor-pointer'
 					fill='none'

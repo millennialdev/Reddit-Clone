@@ -119,20 +119,30 @@ app.get('/comments/:id', (req, res) => {
 	});
 });
 
-// delete method!!!
 app.delete('/comments/:id', (req, res) => {
-	console.log('comment is going to be deleted now');
-	console.log('comment is going to be deleted now');
-	console.log('comment is going to be deleted now');
-	console.log('comment is going to be deleted now');
-	console.log('comment is going to be deleted now');
-
 	Comment.findByIdAndRemove(req.params.id).exec((error, deletedItem) => {
 		if (error) {
 			res.send(error);
 		}
 		return res.json(deletedItem);
 	});
+});
+
+app.put('/comments/:id', (req, res) => {
+	Comment.findByIdAndUpdate(
+		req.params.id,
+		{
+			title: 'UPDATED',
+			body: 'Updated 😎 🔥',
+		},
+		function (err, docs) {
+			if (err) {
+				return res.status(400).json({ success: false, err });
+			} else {
+				return res.status(200).json({ success: true });
+			}
+		}
+	);
 });
 
 app.post('/comments', (req, res) => {
